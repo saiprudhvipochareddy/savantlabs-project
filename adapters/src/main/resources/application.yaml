@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+github:
+  base-url: https://api.github.com
+  issues-url: "%s/repos/%s/%s/issues?state=all&sort=created&direction=desc&per_page=%d&page=%d"
+  token: ${GITHUB_TOKEN}
+  default-limit: 5
+
+firestore:
+  collection: github-issues
