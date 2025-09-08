@@ -3,7 +3,7 @@ package com.savantlabs.adapters.model;
 public class SyncIssuesRequest {
     private String owner;
     private String repository;
-    private String repositoryType;
+    private String syncIssuesType;
     private Integer limit;
 
     public Integer getLimit() {
@@ -30,11 +30,11 @@ public class SyncIssuesRequest {
         this.repository = repository;
     }
 
-    public String getRepositoryType() {
-        return repositoryType;
+    public String getSyncIssuesType() {
+        return syncIssuesType;
     }
 
-    public void setRepositoryType(String repositoryType) {
-        this.repositoryType = repositoryType;
+    public void setSyncIssuesType(String syncIssuesType) {
+        this.syncIssuesType = syncIssuesType;
     }
 }

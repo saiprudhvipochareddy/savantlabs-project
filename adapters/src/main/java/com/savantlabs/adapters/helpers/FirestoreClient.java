@@ -6,12 +6,12 @@ import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.savantlabs.adapters.model.Issue;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.Map;
 
-@Repository
+@Component
 public class FirestoreClient {
     private final Firestore firestore;
     private final String collection;

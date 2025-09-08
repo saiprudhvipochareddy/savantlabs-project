@@ -5,18 +5,22 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.time.Instant;
 
 public class IssueMapper {
-  public static boolean isPullRequest(JsonNode n) { return n.has("pull_request"); }
+    public static boolean isPullRequest(JsonNode jsonNode) {
+        return jsonNode.has("pull_request");
+    }
 
-  public static Issue toIssue(JsonNode n) {
-    Issue i = new Issue();
-    i.id = n.get("id").asText();
-    i.title = text(n, "title");
-    i.state = text(n, "state");
-    i.htmlUrl = text(n, "html_url");
-    String created = text(n, "created_at");
-    i.createdAt = created == null ? null : Instant.parse(created);
-    return i;
-  }
+    public static Issue toIssue(JsonNode jsonNode) {
+        Issue issue = new Issue();
+        issue.id = jsonNode.get("id").asText();
+        issue.title = text(jsonNode, "title");
+        issue.state = text(jsonNode, "state");
+        issue.htmlUrl = text(jsonNode, "html_url");
+        String created = text(jsonNode, "created_at");
+        issue.createdAt = created == null ? null : Instant.parse(created);
+        return issue;
+    }
 
-  private static String text(JsonNode n, String k) { return n.hasNonNull(k) ? n.get(k).asText() : null; }
+    private static String text(JsonNode n, String k) {
+        return n.hasNonNull(k) ? n.get(k).asText() : null;
+    }
 }
