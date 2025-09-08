@@ -17,12 +17,7 @@ Reference: https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#l
 ## Firestore initial setup
 ### Create Firebase Project
 - Go to Firebase Console and create a project by clicking on create new firebase project. (https://console.firebase.google.com/u/0/)
-![img.png](firestore_home.png)
-
-### Download Service Account Key (make it clean)
-- In Project Settings -> Service Accounts, generate a new private key.
-
-Save the JSON file (e.g., firebase-service-account.json) inside your project.
+- Create Service account from google cloud and Download Service Account Key.
 
 ### Configure Firestore Authentication
 - For demo purposes, update Firestore rules to allow public read access so external users can query documents via REST API without authentication.
@@ -89,8 +84,8 @@ Save the JSON file (e.g., firebase-service-account.json) inside your project.
   curl --location 'http://localhost:8080/api/v1/sync/issues' \
 --header 'Content-Type: application/json' \
 --data '{
-    "owner": "octocat",
-    "repository": "hello-world",
+    "owner": "spring-projects",
+    "repository": "eclipse-integration-tcserver",
     "syncIssuesType": "GIT_HUB_REPOSITORY_FIRESTORE",
     "limit": 5
 }'
@@ -116,8 +111,8 @@ Save the JSON file (e.g., firebase-service-account.json) inside your project.
 
 ```json
 {
-  "owner": "octocat",
-  "repository": "hello-world",
+  "owner": "spring-projects",
+  "repository": "eclipse-integration-tcserver",
   "requested": 5,
   "saved": 5
 }
@@ -265,6 +260,6 @@ Save the JSON file (e.g., firebase-service-account.json) inside your project.
 ## Bonus Extensions:
 - Multi-tenant JIRA integration:
   - Extend design to sync GitHub issues into different JIRA systems for different users.
-  - Add a jira_tenants collection with each tenant’s JIRA config (jiraUrl, projectKey, authToken).
+  - Add a jira_tenants collection with each tenant’s JIRA config (jiraUrl, projectKey, authToken in encrypted format).
   - Maintain an issue_sync_state collection mapping GitHub issue -> JIRA issue, including sync status and errors.
-  - Implement GitHubIssueToJiraSyncAdapterImpl alongside Firestore adapter.
+  - Implement GitHubIssueToJiraSyncAdapterImpl alongside GitHubFirestore sync adapter.
