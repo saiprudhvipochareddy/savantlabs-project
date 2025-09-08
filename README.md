@@ -260,6 +260,6 @@ Reference: https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#l
 ## Bonus Extensions:
 - Multi-tenant JIRA integration:
   - Extend design to sync GitHub issues into different JIRA systems for different users.
-  - Add a jira_tenants collection with each tenant’s JIRA config (jiraUrl, projectKey, authToken in encrypted format).
+  - Add a jira_tenants collection with each tenant’s JIRA config (jiraUrl, projectKey, authToken encryption (KMS/Vault)).
   - Maintain an issue_sync_state collection mapping GitHub issue -> JIRA issue, including sync status and errors.
   - Implement GitHubIssueToJiraSyncAdapterImpl alongside GitHubFirestore sync adapter.
