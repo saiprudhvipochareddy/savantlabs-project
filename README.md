@@ -258,6 +258,7 @@ Reference: https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#l
 ```
 
 ## Bonus Extensions:
+- Instead of relying only on issue.id as the documentId in firestore, we can generate a more readable and meaningful identifier by combining fields such as `{owner}_{repo}_{issue_number}`.
 - Multi-tenant JIRA integration:
   - Extend design to sync GitHub issues into different JIRA systems for different users.
   - Add a jira_tenants collection with each tenant’s JIRA config (jiraUrl, projectKey, authToken encryption (KMS/Vault)).
